@@ -104,3 +104,29 @@ logger2.log("This is the second massage "); // This is the second massage
  * Configuration
  * Thread-Safety
  */
+
+/**
+ * ----DISADVANTAGES
+ * Global State
+ * Testing Difficulty
+ * Concurrency Issues
+ * Subclassing
+ * Overuse and Misuse
+ * Memory Management
+ */
+
+// 1 . Global State
+//  Leads to shared state and increase coupling
+class Application {
+  constructor(private logger: LoggerSingleton) {}
+
+  run(): void {
+    this.logger.log("Application is running");
+    this.logger.log("Application is shutting down");
+  }
+}
+
+let logger = LoggerSingleton.getInstance();
+
+let app = new Application(logger);
+app.run();
