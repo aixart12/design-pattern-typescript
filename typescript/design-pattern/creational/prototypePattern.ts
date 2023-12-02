@@ -118,3 +118,34 @@ let redRectangle = new Rectangle(
 
 let anotherRectangle: Shape = redRectangle.clone();
 anotherRectangle.properties.color = "blue";
+
+// Criticism of Prototype Pattern
+
+let original = {
+  name: "John",
+  address: {
+    street: "123 Main St`",
+    city: "New York",
+  },
+};
+
+let shallowCopy = { ...original };
+shallowCopy.address.city = "Los Angeles";
+console.log(shallowCopy.address.city); // Los Angeles
+console.log(original.address.city); // Los Angeles
+
+let deepCopy = JSON.parse(JSON.stringify(original));
+deepCopy.address.city = "San Francisco";
+console.log(deepCopy.address.city); // San Francisco
+console.log(original.address.city); // New York
+
+// Where to use
+/**
+ * Graphics Editor
+ * Game Development
+ * Distributed Systems and Database
+ * Data Processing Pipeline
+ * UI Development
+ * 
+
+*/
